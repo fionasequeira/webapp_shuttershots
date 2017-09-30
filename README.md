@@ -46,7 +46,7 @@ $ git clone https://github.com/fionasequeira/webapp_shuttershots.git
 - Create db - postgres with the above PostgreSQL credentials and port
 
 - Run the followin queries to set up the tables - 
-
+```sql
 CREATE TABLE public.userinfo
 (
     user_id serial,
@@ -57,7 +57,7 @@ CREATE TABLE public.userinfo
     first_name character(255) COLLATE pg_catalog."default" NOT NULL,
     last_name character(255) COLLATE pg_catalog."default" NOT NULL,
     date_of_birth date NOT NULL,
-    picture_medium bytea,
+    picture_medium character varying(200),
     last_log_in timestamp without time zone,
     CONSTRAINT userinfo_pkey PRIMARY KEY (user_id)
 );
@@ -66,7 +66,7 @@ CREATE TABLE public.multimedia
 (
     media_id serial,
     post_time timestamp without time zone,
-    content bytea NOT NULL,
+    content character varying(200) NOT NULL,
     description text COLLATE pg_catalog."default",
     user_id integer,
     CONSTRAINT multimedia_pkey PRIMARY KEY (media_id),
@@ -75,7 +75,7 @@ CREATE TABLE public.multimedia
         ON UPDATE CASCADE
         ON DELETE CASCADE
 );
-
+```
 ## Log-in and Home page walkthrough
 
 #### Signup/Login Workflow:
