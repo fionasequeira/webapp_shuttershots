@@ -15,7 +15,7 @@
 <head>
 <!-- Displaying all photos shared to the network  -->
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-    <title>ActiveSpace: Multimedia</title>
+    <title>Shuttershots: My Gallery</title>
     <link rel="stylesheet" type="text/css" href="../assets/styles/styles.css">
     <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="../assets/styles/home.css">
@@ -40,7 +40,7 @@
               
               echo '<p>';
               while($row = pg_fetch_row($result_media)){
-                echo '<img class= "imageformat" src="uploads/'.$row[0].'">';
+                echo '<img class= "imageformat" src="uploads/'.$row[0].'" width= "450" height= "400">';
                 echo '<br>';
                 echo $row[1];
                 echo '<br>';

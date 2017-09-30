@@ -10,6 +10,7 @@
   }
 ?>
 
+<!-- user can change the caption of the image displayed -->
 <!DOCTYPE html>
 <html>
 <head>

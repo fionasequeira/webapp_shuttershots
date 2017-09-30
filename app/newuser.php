@@ -35,16 +35,16 @@
 
 
         if(pg_num_rows($result)>0){
-          echo '<p>Email already exists. Please go back and login with your credentials.</p>';
+          echo "<p align='center'>Email already exists. Please go back and login with your credentials.</p>";
         }
         else if(pg_num_rows($resa)>0){
-            echo "<p>Username already exists. Please choose a different username.</p>";
+            echo "<p align='center'>Username already exists. Please choose a different username.</p>";
         }
         else{
           $query = "INSERT INTO userinfo VALUES (DEFAULT,LOCALTIMESTAMP,'$_POST[form_email]','$_POST[form_username]','$_POST[form_password]','$_POST[form_first]','$_POST[form_last]','$_POST[form_dob]',NULL,LOCALTIMESTAMP);";
         
           $rs = pg_query($db, $query) or die("Cannot execute query: $query\n");
-          echo "<p>New user created successfully. Please log in with your email ID and password on the login screen.</p>";
+          echo "<p align='center'>New user created successfully. Please log in with your email ID and password on the login screen.</p>";
           echo '<a href="login.php><button> LOGIN </button></a>';}
     }  
   ?>

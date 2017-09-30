@@ -3,7 +3,7 @@ $invalid_search='';
   $input='';
     include('../includes/db_connect.php');  
 ?>
-
+<!-- Vistors on shuttershots homepage -->
 <!DOCTYPE html>
 <html>
 <head>

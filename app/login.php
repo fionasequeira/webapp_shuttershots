@@ -28,6 +28,7 @@ if(isset($_POST["submitbutton"])){
 
 ?>
 
+<!-- log in page -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +56,7 @@ if(isset($_POST["submitbutton"])){
     <div align="right">
          <form class="signin" action="login.php" align="right" method="post"> 
 
-            <!-- FORM-Existing user LOGIN       -->
+            <!-- FORM-Existing users and Visitors to shuttershots      -->
             <h4 class="heading"> shuttershots </h4>
             <h3 align="center"> New to shuttershots? View our gallery without signing in! </h3>
             <div align="center">
@@ -63,6 +64,8 @@ if(isset($_POST["submitbutton"])){
             </div>
             <br>
             <br>
+
+            <!-- FORM-Existing user LOGIN       -->
             <h3 align="center"> Returning members, log in here! </h3>
             <input type="text" class="form-control" name="EmailID" placeholder="Email Address" autofocus="" />
             <input type="password" class="form-control" name="password" placeholder="Password" />      
@@ -73,18 +76,15 @@ if(isset($_POST["submitbutton"])){
             <div align:"center"; style="color: red; background:rgba(0, 0, 0, .70); font-size: 15px;" ><?php echo $ID ?></div>
             <div align:"center"; style="color: red; background:rgba(0, 0, 0, .70); font-size: 15px;" ><?php echo $PWD ?></div>
             <div align:"center"; style="color: red; background:rgba(0, 0, 0, .70); font-size: 15px;" ><?php echo $Invalid_pwd ?></div>
-          <br>              
+            <br>              
         <div align="center">
+                        <!-- New User SIGN UP LINK -->
         <button><a href="newuser.php" class="button">  Sign UP here! </a></button>
     </div>
-        
-        </form>
-        <br>
-        <br> 
-        <br>
-
-            <!-- New User SIGN UP LINK -->
-
+</form>
+<br>
+<br> 
+<br>
 </body>
 </html>
 

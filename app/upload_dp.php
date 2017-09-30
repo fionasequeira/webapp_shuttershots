@@ -10,11 +10,13 @@
   }
 ?>
 
+<!-- upload a new display picture image to the profile and network -->
+
 <!DOCTYPE html>
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-    <title>ActiveSpace: Display Pciture</title>
+    <title>Shuttershots: Display Pciture</title>
     <link rel="stylesheet" type="text/css" href="../assets/styles/styles.css">
     <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="../assets/styles/home.css">
@@ -90,23 +92,6 @@
                     }
                 }
             }    
-            /*
-            if(isset($_POST["submitbutton"])){     
-                if(empty($_POST['Description'])) {
-                    echo 'No Description';
-                }
-                else if(empty($_POST['fileToUpload'])) {
-                    echo 'No File input';
-                }
-                else{
-                    $id= "select user_id from userinfo where email_id like '".$_SESSION['EmailID']."';";
-                    $result1=pg_query($id);
-                    $id_op=pg_fetch_row($result1);
-                    $query = "select upload_photo('".$_POST['Description']."','".$_POST['fileToUpload']."','".$id_op[0]."'); ";
-                    $result = pg_query($query);
-                    echo "File has been successfully uploaded! <br> Click on Photos in navigation bar to check out the latest uploads!";
-                }
-            }*/
         ?>      
       </p>
     </div>

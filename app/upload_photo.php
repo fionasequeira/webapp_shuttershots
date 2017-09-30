@@ -10,6 +10,7 @@
   }
 ?>
 
+<!-- upload a new image to the system and network -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,7 +88,7 @@
                         $id= "select user_id from userinfo where email_id like '".$_SESSION['EmailID']."';";
                         $result1=pg_query($id);
                         $id_op=pg_fetch_row($result1);
-                        $query = "select upload_photos('".$description."','".$filename."','".$id_op[0]."'); ";
+                        $query = "insert into multimedia values(DEFAULT, LOCALTIMESTAMP,'".$filename."','".$description."','".$id_op[0]."'); ";
                         $result = pg_query($query);
                         echo "<p>File has been successfully uploaded! <br> Click on Photos in navigation bar to check out the latest uploads! </p>";
                         echo '<br>';
@@ -100,7 +101,7 @@
                 }
             }
             else {
-                echo "<p>Please enter an imagec file</p>";
+                echo "<p>Please enter an image file</p>";
                 echo "<br>";
             }
         }

@@ -31,10 +31,15 @@
             $uidd = pg_fetch_row($resd);
         if($_GET['photo']){
           (int)$photo_id=$_GET['photo'];
+          $query = "select content FROM multimedia WHERE media_id = ".$photo_id." AND user_id = ".$uidd[0].";";
+          $result = pg_query($query) or die("Cannot execute query: $querys\n");
+          $row = pg_fetch_row($result);
+          echo $row[0];
           $querys = "DELETE FROM multimedia WHERE media_id = ".$photo_id." AND user_id = ".$uidd[0].";";
           $results = pg_query($querys) or die("Cannot execute query: $querys\n");
-          echo "The selected image was deleted. ";
-          echo '<a href="home.php"><button align="center"> Livefeed </button></a>';
+          unlink("uploads/".$row[0]);
+          echo " selected image was deleted. ";
+          echo '<a href="home.php"><button align="center"> take me to livefeed </button></a>';
         }
         ?>
       </p>
