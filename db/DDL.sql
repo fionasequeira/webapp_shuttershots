@@ -8,7 +8,7 @@ CREATE TABLE public.userinfo
     first_name character(255) COLLATE pg_catalog."default" NOT NULL,
     last_name character(255) COLLATE pg_catalog."default" NOT NULL,
     date_of_birth date NOT NULL,
-    picture_medium bytea,
+    picture_medium character varying(100),
     last_log_in timestamp without time zone,
     CONSTRAINT userinfo_pkey PRIMARY KEY (user_id)
 );
@@ -17,7 +17,7 @@ CREATE TABLE public.multimedia
 (
     media_id serial,
     post_time timestamp without time zone,
-    content bytea NOT NULL,
+    content character varying(100),
     description text COLLATE pg_catalog."default",
     user_id integer,
     CONSTRAINT multimedia_pkey PRIMARY KEY (media_id),
