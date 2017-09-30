@@ -1,6 +1,8 @@
 # shuttershots - an image gallery
 A simple PHP web application that allow visitors and signed up users alike, to browse a gallery of images uploaded across the network. Users signed up on shuttershots can upload a PNG, JPG, or GIF image with a caption. Visitors to the site can view uploaded images. A simple, secure login and signup system with PHP and PostgreSQL.
 
+![Alt text](/assets/images/Login.png?raw=true "Landing")
+
 ## Getting Started
 
 #### Installations
@@ -8,11 +10,11 @@ bitnami-mappstack-7.0.23-0-osx-x86_64-installer.dmg
 
 #### Dependancies
 
-Apache - 2.4.18
-PHP 5.6.31
-PostgreSQL - 9.6
-Bitnami MAPP Stack 7.0.23-0
-phpPgAdmin 5.1
+- Apache - 2.4.18
+- PHP 5.6.31
+- PostgreSQL - 9.6
+- Bitnami MAPP Stack 7.0.23-0
+- phpPgAdmin 5.1
 
 ## Procedure
 
@@ -84,19 +86,34 @@ This would redirect you to the login.php page.
 - Browse the gallery as a visitor
 - Existing users can sign in
 - Sign up option for a visitor.
+![Alt text](/assets/images/New%20user%20Sign%20up.png?raw=true "Landing")
 
 #### Gallery
 
 - Visitors are redirected to browsehome.php, wherein they can browse the livefeed, through all images across the shuttershots network.
 
+ ![Alt text](/assets/images/Guest%20user%20Homepage.png?raw=true "Landing")
+
 - Users are redirected to home.php, wherein they can browse the livefeed, through all images across the shuttershots network (including theirs) and have an option to Edit the caption or delete an image uploaded by them.
 
+ ![Alt text](/assets/images/Existing%20user%20Homepage.png?raw=true "Landing")
+ 
 - In additon, signed in users observe a nav bar with buttons, to view their profile, view all their photos, a settings button to edit their profile and a log out button to end the session.
+ ![Alt text](/assets/images/Existing%20user's%20photo gallery.png?raw=true "Landing")
+ ![Alt text](/assets/images/Option%20to%20edit%20caption:delete%20user's%20uploaded%20image%20in%20livefeed.png?raw=true "Landing")
 
 The livefeed displays top 10 images sorted in descending order of date posted. 
 All users view a previous / back button at the end of the livefeed, which redirects them to the previous 10 or next 10 images respectively, with notifications for end of gallery.
 
-
+No new updates 
+ ![Alt text](/assets/images/No%20new%20updates%20(Previous:Next).png?raw=true "Landing")
+ 
+Previous and Next buttons on LIVEFEED
+ ![Alt text](/assets/images/Previous%20and%20Next%20buttons%20on%20livefeed.png?raw=true "Landing")
+ 
+End of gallery (previous:next)
+ ![Alt text](/assets/images/End%20of%20gallery%20(previous:next).png?raw=true "Landing")
+ 
 #### Upload Workflow:
 
 - Login using login.php form.
@@ -117,6 +134,8 @@ There are two ways a user can achieve this.
 - In the event of Edit Caption, provide an image caption, hit Submit.
 - In the event of Delete, page redirects to notify the user than image has been Deleted.
 
+![Alt text](/assets/images/Option%20to%20edit%20caption:delete%20user's%20uploaded%20image%20in%20livefeed.png?raw=true "Landing")
+
 ##### Method 2
 - Login using login.php form.
 - User is presented with all the images that were uploaded on the network at home.php.
@@ -125,3 +144,8 @@ There are two ways a user can achieve this.
 - In the event of Edit Caption, provide an image caption, hit Submit.
 - In the event of Delete, page redirects to notify the user than image has been Deleted.
 
+Edit Caption
+![Alt text](/assets/images/Edit%20Caption.png?raw=true "Landing")
+
+Delete Image confirmation.png
+![Alt text](/assets/images/Delete%20Image%20confirmation.png?raw=true "Landing")
