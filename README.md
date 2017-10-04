@@ -36,8 +36,8 @@ Apache Web Server
 
 #### Cloning the Repository to this location-
 
-$ cd /Users/Fiona/Desktop/WebApp/Application/apache2/htdocs/
-$ git clone https://github.com/fionasequeira/webapp_shuttershots.git
+- $ cd /Users/Fiona/Desktop/WebApp/Application/apache2/htdocs/
+- $ git clone https://github.com/fionasequeira/webapp_shuttershots.git
 
 #### Setting up phppgadmin and tables
 
