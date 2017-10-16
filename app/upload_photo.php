@@ -42,11 +42,12 @@
 
                 if(getimagesize($_FILES["fileToUpload"]["tmp_name"])) {
                 $target_dir = "uploads/";
-                $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+                $t = time();
+                $target_file = $target_dir.$t;
                 $uploadOk = 1;
-                $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+                // $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
                 $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-                if($check !== false) {
+                if(($check['mime'] == 'image/png') || ($check['mime'] == 'image/jpg') || ($check['mime'] == 'image/jpeg') || ($check['mime'] == 'image/gif')) {
                     echo "<p> File is an image - " . $check["mime"] . ".</p>";
                     $uploadOk = 1;
                 } else {
@@ -67,12 +68,12 @@
                     $uploadOk = 0;
                 }
                 // Allow certain file formats
-                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                && $imageFileType != "gif" ) {
-                    echo "<p>Sorry, only JPG, JPEG, PNG & GIF files are allowed.</p>";
-                    echo '<br>';
-                    $uploadOk = 0;
-                }
+                // if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                // && $imageFileType != "gif" ) {
+                //     echo "<p>Sorry, only JPG, JPEG, PNG & GIF files are allowed.</p>";
+                //     echo '<br>';
+                //     $uploadOk = 0;
+                // }
                 // Check if $uploadOk is set to 0 by an error
                 if ($uploadOk == 0) {
                     echo "<p>Sorry, your file was not uploaded.</p>";
@@ -81,9 +82,9 @@
                 } else {
                     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                         // Gets description from POST 
-                        $description = $_POST['Description'];
+                        $description = pg_escape_string($_POST['Description']);
                         // Gets photo name
-                        $filename = basename($_FILES["fileToUpload"]["name"]);
+                        $filename = $t;
 
                         $id= "select user_id from userinfo where email_id like '".$_SESSION['EmailID']."';";
                         $result1=pg_query($id);

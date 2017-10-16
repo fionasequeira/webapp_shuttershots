@@ -45,8 +45,8 @@
                 else{
                    echo '<img class="imageformat" src="uploads/'.$row[1].'" align="center" width="80" height="80"><br>';
                 }
-                
-                echo '<br>'.$row[0].'! Its good to see you up and running! <br><br>';
+                $username = htmlspecialchars($row[0]);
+                echo '<br>'.$username.'! Its good to see you up and running! <br><br>';
                 // User has an option to upload an image with ready, set, shutter
                 echo 'Share a PICTURE about your latest ventures<br>';
                 echo '<a href="upload_photo.php"><button>   ready, set, shutter!    </button></a>';
@@ -66,7 +66,7 @@
                 echo '<br>';
                 echo '<a href="home.php?offset='.($offset+10).'"><button> * next * </button></a>';
               }
-            }
+              }
              echo '<br>';
              echo '<br>';
              if($offset>=0) {
@@ -82,7 +82,8 @@
                     echo '<br> <i> No caption set  </i>';
                   }
                   else {
-                    echo '<b> " '.$row[2].' " </b>';
+                    $caption = htmlspecialchars($row[2]);
+                    echo '<b> " '.$caption.' " </b>';
                   }
                   echo '<br> posted on "'.$row[3];
                   echo '<br>'; 

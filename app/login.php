@@ -13,14 +13,20 @@ if(isset($_POST["submitbutton"])){
         $PWD= 'No Password input';
     }
     else{
-        $query = "select * from userinfo where user_password = '".$_POST['password']."' and email_id= '".$_POST['EmailID']."';";
+        $email = pg_escape_string($_POST['EmailID']);
+        $password = pg_escape_string($_POST['password']);
+        $query = "select user_password from userinfo where email_id= '".$_POST['EmailID']."';";
         $result = pg_query($query);
-        if(pg_num_rows($result)>0){
-            session_start();
-            $_SESSION['EmailID']=$_POST['EmailID'];
-            header('Location: '.'home.php');
-        }
-        else{
+        if($row = pg_fetch_row($result)){
+            if(password_verify($password, $row[0])){
+                session_start();
+                $_SESSION['EmailID']=$_POST['EmailID'];
+                header('Location: '.'home.php');
+            }
+            else {
+                $Invalid_pwd = 'Username or Password is invalid. Please try again';
+            }
+        } else {
              $Invalid_pwd = 'Username or Password is invalid. Please try again!';
         }
     }

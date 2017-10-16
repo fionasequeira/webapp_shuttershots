@@ -58,9 +58,22 @@
 </html>
 <?php
     if(isset($_POST["edit_caption_submit"])){ 
-      $query = "UPDATE multimedia SET description = '$_POST[form_description]' WHERE media_id='".$_GET['photo']."';" ;
-      $rs = pg_query($db, $query) or die("Cannot execute query: $query\n");
-      echo "<p> Image caption edited successfully.<br>";
-      echo '<a href="home.php"><button align="center"> Livefeed </button></a> </p>';
+      $queryd = "SELECT user_id FROM userinfo WHERE email_id = '$_SESSION[EmailID]';";
+      $resd = pg_query($queryd) or die("Cannot execute query: $queryd\n");
+      $uidd = pg_fetch_row($resd);
+      $photoid = pg_escape_string($_GET['photo']);
+
+      $query = "SELECT * FROM multimedia where media_id = ".$photoid." AND user_id = ".$uidd[0].";";
+      $result = pg_query($db, $query);
+      if(pg_num_rows($result)>0){
+        $form_description = pg_escape_string($_POST['form_description']);
+        $query = "UPDATE multimedia SET description = '$form_description' WHERE media_id='".$photoid."' and user_id = ".$uidd[0].";" ;
+        $rs = pg_query($db, $query) or die("Cannot execute query: $query\n");
+        echo "<p> Image caption edited successfully.<br>";
+        echo '<a href="home.php"><button align="center"> Livefeed </button></a> </p>';
+      }
+      else {
+        echo "<p> Image caption not edited.<br>";
+      }
   }
 ?>

@@ -30,21 +30,23 @@
         
         $query = " SELECT username from userinfo where username = '$_POST[form_username]' ";
         $result = pg_query($query);
-        if(pg_num_rows($result)>0){
-    }
 
-
-        if(pg_num_rows($result)>0){
-          echo "<p align='center'>Email already exists. Please go back and login with your credentials.</p>";
+        if(pg_num_rows($resa)>0){
+          echo "<p float='center'>Email already exists. Please go back and login with your credentials.</p>";
         }
-        else if(pg_num_rows($resa)>0){
-            echo "<p align='center'>Username already exists. Please choose a different username.</p>";
+        else if(pg_num_rows($result)>0){
+            echo "<p float'center'>Username already exists. Please choose a different username.</p>";
         }
         else{
-          $query = "INSERT INTO userinfo VALUES (DEFAULT,LOCALTIMESTAMP,'$_POST[form_email]','$_POST[form_username]','$_POST[form_password]','$_POST[form_first]','$_POST[form_last]','$_POST[form_dob]',NULL,LOCALTIMESTAMP);";
-        
+          $email = pg_escape_string($_POST["form_email"]);
+          $username = pg_escape_string($_POST["form_username"]);
+          $firstname = pg_escape_string($_POST["form_first"]);
+          $lastname = pg_escape_string($_POST["form_last"]);
+          $password = $_POST['form_password'];
+          $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+          $query = "INSERT INTO userinfo VALUES (DEFAULT,LOCALTIMESTAMP,'$email','$username','$hashed_password','$firstname','$lastname','$_POST[form_dob]',NULL,LOCALTIMESTAMP);";
           $rs = pg_query($db, $query) or die("Cannot execute query: $query\n");
-          echo "<p align='center'>New user created successfully. Please log in with your email ID and password on the login screen.</p>";
+          echo "<p float='center'>New user created successfully. Please log in with your email ID and password on the login screen.</p>";
           echo '<a href="login.php><button> LOGIN </button></a>';}
     }  
   ?>
@@ -55,7 +57,7 @@
       <div class="container" align="center"> 
       <form align="center" method="POST">
         <p float ="center">
-     <label>Username: <input type="text" name="form_username" required="" /></label><br>
+     <label>Username (accepted length- 40): <input type="text" name="form_username" required="" /></label><br>
      <label>Password: <input type="password" name="form_password" required="" /></label><br>
      <label>First Name: <input type="text" name="form_first" required="" /></label><br>
      <label>Last Name: <input type="text" name="form_last" required="" /></label><br>
